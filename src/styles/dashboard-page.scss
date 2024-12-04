@@ -1,0 +1,221 @@
+// Variables
+$primary-color: #7952b3;
+$secondary-color: #5a3d8a;
+$dark-bg: #1a1d21;
+$card-bg: #282c34;
+$text-light: #ffffff;
+$text-gray: #a8b2c1;
+$card-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+// Mixins
+@mixin card-hover-effect {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: $card-shadow;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@mixin button-style($bg-color, $hover-color) {
+  background: $bg-color;
+  color: $text-light;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  &:hover {
+    background: $hover-color;
+  }
+}
+
+// General Styles
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: $dark-bg;
+  color: $text-light;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+// Header
+.top-header {
+  background: rgba($primary-color, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+
+  .logo-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: $text-light;
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    .nav-btn {
+      @include button-style(rgba($text-light, 0.1), rgba($text-light, 0.2));
+      border: 1px solid rgba($text-light, 0.1);
+      &:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+}
+
+// Main Content
+.main-content {
+  margin-top: 80px;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+
+  .dashboard-card {
+    background: $card-bg;
+    border-radius: 16px;
+    overflow: hidden;
+    height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+    @include card-hover-effect;
+
+    .card-title {
+      background: $primary-color;
+      color: $text-light;
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.25rem;
+      font-weight: 500;
+    }
+
+    .card-content {
+      padding: 1.5rem;
+      flex-grow: 1;
+      overflow-y: auto;
+    }
+  }
+}
+
+// Profile Section
+.profile-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid $primary-color;
+  margin: 1rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .profile-placeholder {
+    font-size: 4rem;
+    color: $text-gray;
+  }
+}
+
+.profile-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  justify-content: center;
+
+  .download-btn {
+    @include button-style(#28a745, #218838);
+  }
+}
+
+// Upload Section
+.upload-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .upload-btn {
+    @include button-style($primary-color, $secondary-color);
+  }
+}
+
+// Menu List
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  .menu-item {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: $text-light;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: rgba($text-light, 0.05);
+    }
+
+    .menu-icon {
+      width: 40px;
+      height: 40px;
+      background: $primary-color;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+// Language Switcher
+.language-switcher {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: $card-bg;
+  padding: 0.75rem;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: $card-shadow;
+}
+
+// Media Queries
+@media (max-width: 768px) {
+  .main-content {
+    grid-template-columns: 1fr;
+  }
+}

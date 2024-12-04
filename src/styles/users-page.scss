@@ -1,0 +1,48 @@
+:root {
+  --primary-color: #2d3436;
+  --accent-color: #6c5ce7;
+}
+
+body {
+  background: linear-gradient(135deg, #a8c0ff, #3f2b96);
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  color: #ffffff;
+}
+
+.navbar {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.navbar-brand, .nav-link {
+  color: white !important;
+}
+
+.table-container {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.table {
+  color: white;
+}
+
+.btn-primary {
+  background: var(--accent-color);
+  border: none;
+}
+
+.btn-danger {
+  background: rgba(231, 76, 60, 0.9);
+  border: none;
+}
+
+.pagination .page-link {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-radius: 8px;
+}
